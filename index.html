@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Tuesday Night Club - 星期二俱樂部</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- 頂部資訊列 -->
+    <header class="top-bar">
+      <button id="notebook-btn" class="top-btn" type="button">
+        📓 記事簿 <span id="clue-badge" class="badge hidden">NEW</span>
+      </button>
+      <div class="top-right-info">
+        <span id="page-indicator" class="page-indicator">第 1 / 48 頁</span>
+        <div class="score-box">🏆 分數：<span id="score-val">0</span></div>
+      </div>
+    </header>
+
+    <!-- 遊戲主畫面大框 -->
+    <main class="main-frame">
+      <!-- 角色／場景圖片區 -->
+      <div id="image-stage" class="image-stage hidden">
+        <div class="image-frame">
+          <img id="scene-image" src="" alt="場景與角色圖片" />
+          <div id="image-fallback" class="image-fallback hidden"></div>
+        </div>
+      </div>
+
+      <!-- 對白與互動區 -->
+      <section class="dialogue-section">
+        <div id="speaker-tag" class="speaker-tag">📖 旁白</div>
+
+        <div class="dialogue-box">
+          <div id="dialogue-text" class="dialogue-text"></div>
+
+          <!-- 題目／計時器互動容器 -->
+          <div id="interaction-area" class="interaction-area hidden"></div>
+
+          <!-- 左／右下角翻頁按鈕 -->
+          <div class="nav-controls">
+            <button id="prev-btn" class="nav-btn" type="button">◀ 上一頁</button>
+            <span class="enter-hint">按 Enter 鍵可前往下一頁</span>
+            <button id="next-btn" class="nav-btn primary" type="button">下一頁 ▶</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 英文翻譯彈出氣泡 -->
+  <div id="vocab-bubble" class="vocab-bubble hidden" role="tooltip">
+    <div id="vocab-word" class="vocab-word"></div>
+    <div id="vocab-meaning" class="vocab-meaning"></div>
+  </div>
+
+  <!-- 記事簿 Modal -->
+  <div id="notebook-modal" class="modal-overlay hidden" aria-hidden="true">
+    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h2 id="modal-title">📓 偵探記事簿</h2>
+        <button id="close-modal-btn" class="close-btn" type="button" aria-label="關閉">✕</button>
+      </div>
+
+      <!-- 3 個 Tabs -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="tab-members" type="button">Tuesday Night Club 成員</button>
+        <button class="tab-btn" data-tab="tab-suspects" type="button">謎題相關角色</button>
+        <button class="tab-btn" data-tab="tab-items" type="button">謎題相關物品</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Tab 1: 俱樂部成員 -->
+        <div id="tab-members" class="tab-panel active">
+          <div class="cards-grid" id="club-members-grid"></div>
+        </div>
+
+        <!-- Tab 2: 謎題相關角色 -->
+        <div id="tab-suspects" class="tab-panel">
+          <div class="cards-grid" id="suspects-grid"></div>
+        </div>
+
+        <!-- Tab 3: 謎題相關物品 (2 個一 row) -->
+        <div id="tab-items" class="tab-panel">
+          <div id="items-gallery" class="items-gallery"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
